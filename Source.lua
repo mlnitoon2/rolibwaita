@@ -307,7 +307,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 		if openandclosenotificationthingshown == false then
 			openandclosenotificationthingshown = true
 			game:GetService("StarterGui"):SetCore("SendNotification", {
-				Title = "Notification",
+				Title = WindowOptions.Keybind .. " to reopen",
 				Text = "Press " .. WindowOptions.Keybind .. " to reopen UI.",
 			})
 		end
