@@ -1,7 +1,7 @@
 # rolibwaita
 
 * This is a fork of a [codeberg.org repository](https://codeberg.org/Blukez/rolibwaita) to add new features and fix issues.
-A Roblox user interface library that looks like gnome.
+A Roblox user interface library that looks like [gnome.](https://www.gnome.org/)
 Please feel free to create a pull request or submit an issue.
 
 ## Documentation
@@ -238,7 +238,7 @@ local ColorPicker = Section:NewColorPicker({
     Name = "Example ColorPicker", -- Name of the color picker | string, optional
     Description = "Example Description",  -- Description of the color picker | string, optional 
     DefaultColor = Color3.fromRGB(255, 0, 0), -- Default color | Color3, optional
-    Callback = function(color) -- Code executed when color is selected | function, optional
+    Callback = function(value) -- Code executed when color is selected | function, optional
         
     end,
 })
