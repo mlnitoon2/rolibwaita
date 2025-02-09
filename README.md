@@ -8,19 +8,18 @@ Please feel free to create a pull request or submit an issue.
 
 ### Booting the library
 
+Place this at the top of your code.
 ```lua
 local rolibwaita = loadstring(game:HttpGet("https://raw.githubusercontent.com/mlnitoon2/rolibwaita/refs/heads/main/Source.lua"))()
 ```
 
-Place this at the top of your code.
-
-### Create a window
+### Creating a window
 
 ```lua
 local Window = rolibwaita:NewWindow({
     Name = "Window Example", -- Name of window | string, required
     Keybind = "RightShift", -- Keybind to open and close this window | string, required
-    UseCoreGui = true, -- Whether to use coregui / gethui as the gui parent | bool, optional
+    UseCoreGui = false, -- Whether to use coregui / gethui as the gui parent | bool, optional
     PrintCredits = true -- Whether to print ui library credits and info in the console | bool, optional
 })
 ```
@@ -29,11 +28,10 @@ See [this](https://create.roblox.com/docs/reference/engine/enums/KeyCode) for in
 
 ### Remove a element
 
+**This works on ALL elements.**
 ```lua
 Element:Remove()
 ```
-
-**This works on ALL elements.**
 
 ### Create a tab
 
@@ -43,6 +41,8 @@ local Tab = Window:NewTab({
     Icon = "rbxassetid://1234" -- Icon for the tab button | string, optional
 })
 ```
+
+See [this](https://create.roblox.com/docs/projects/assets) for info on rbxassetids.
 
 ### Edit a tab
 
@@ -59,7 +59,7 @@ Tab:Edit({
 local separator = Window:NewSeparator()
 ```
 
-A separator is just a line inbetween tab buttons, only for a stylistic purpose, example:
+A separator is just a line inbetween tab buttons, only for stylistic purposes, example:
 ```lua
 local Tab1 = Window:NewTab({
 	Name = "Tab Example", -- Name of the tab | string, required
@@ -73,6 +73,9 @@ local Tab2 = Window:NewTab({
 	Icon = "rbxassetid://1234" -- Icon for the tab button | string, optional
 })
 ```
+
+> [!TIP]
+> Separators can be helpful to organize your UI if you have a lot of tabs.
 
 ### Create a section
 
