@@ -1506,15 +1506,16 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 
 	function window:NewSeparator()
 		local separatorClone = Examples.Separator:Clone()
-		separatorClone.BackgroundTransparency = 1
 		separatorClone.Parent = tabButtons
 
-		createTween(separatorClone, TweenPresets.Fast, { BackgroundTransparency = 0 })
+		seperatorClone.Seperator.BackgroundTransparency = 1
+
+		createTween(separatorClone.Seperator, TweenPresets.Fast, { BackgroundTransparency = 0.5 })
 
 		local separatorFuncs = {}
 
 		function separatorFuncs:Remove()
-			createTween(separatorClone, TweenPresets.Medium, { BackgroundTransparency = 1 })
+			createTween(separatorClone.Seperator, TweenPresets.Medium, { BackgroundTransparency = 1 })
 			task.wait(0.5)
 			separatorClone:Destroy()
 		end
