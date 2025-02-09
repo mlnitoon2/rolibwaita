@@ -1505,7 +1505,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 	end
 
 	function window:NewSeparator()
-		local separatorClone = Examples.Separator:Clone()
+		local separatorClone = Examples.SeparatorFrame:Clone()
 		separatorClone.Parent = tabButtons
 
 		seperatorClone.Seperator.BackgroundTransparency = 1
