@@ -14,7 +14,7 @@
 local rolibwaita = {}
 
 -- \\ Variables // --
-local Assets = game:GetObjects("rbxassetid://101695147467873")[1]
+local Assets = game:GetObjects("rbxassetid://133521963689954")[1]
 
 local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
