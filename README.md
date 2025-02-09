@@ -1,14 +1,15 @@
 # rolibwaita
 
-A Roblox user interface libary that looks like gnome.
-pls report bugs and issues by dming me or adding one to the issues page
+* This is a fork of a [codeberg.org repository](https://codeberg.org/Blukez/rolibwaita) to add new features and fix issues.
+A Roblox user interface library that looks like gnome.
+Please feel free to create a pull request or submit an issue.
 
 ## Documentation
 
 ### Booting the library
 
 ```lua
-local rolibwaita = loadstring(game:HttpGet("https://codeberg.org/Blukez/rolibwaita/raw/branch/master/Source.lua"))()
+local rolibwaita = loadstring(game:HttpGet("https://github.com/mlnitoon2/rolibwaita/raw/branch/master/Source.lua"))()
 ```
 
 Place this at the top of your code.
