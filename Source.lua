@@ -101,6 +101,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 		print("Created By Blukez, Inspired By GNOME.")
 		print("Contributions:")
 		print("RealPacket | refactoring")
+		print("mlnitoon2 | giving new life to rolibwaita")
 	end
 
 	title.Text = WindowOptions.Name
