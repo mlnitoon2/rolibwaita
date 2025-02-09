@@ -1508,7 +1508,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 		local separatorClone = Examples.SeparatorFrame:Clone()
 		separatorClone.Parent = tabButtons
 
-		seperatorClone.Separator.BackgroundTransparency = 1
+		separatorClone.Separator.BackgroundTransparency = 1
 
 		createTween(separatorClone.Separator, TweenPresets.Fast, { BackgroundTransparency = 0.5 })
 
