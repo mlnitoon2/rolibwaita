@@ -982,7 +982,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 					callback = TextboxOptions.Callback
 				end
 
-                if TextboxOptions.Trigger ~= nil then
+				if TextboxOptions.Trigger ~= nil then
 					trigger = TextboxOptions.Trigger
 				end
 
@@ -1010,8 +1010,8 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 					createTween(textBoxClone, TweenPresets.Fast, { BackgroundColor3 = Color3.fromRGB(54, 54, 54) })
 				end)
 
-                if trigger ~= nil then
-                    if trigger == "FocusLost" then
+				if trigger ~= nil then
+					if trigger == "FocusLost" then
 						onTextConnection = textBoxClone.TextBox.FocusLost:Connect(function()
 							callback(textBoxClone.TextBox.Text)
 						end)
@@ -1020,7 +1020,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 							callback(textBoxClone.TextBox.Text)
 						end)
 					end
-                end
+				end
 
 				local textBoxFuncs = {}
 				function textBoxFuncs:Edit(newTextBoxOptions)
@@ -1446,6 +1446,79 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 					end
 				end)
 			end
+
+			function sectionFuncs:NewColorPicker(SliderOptions)
+				local colorPickerClone = Examples.Slider:Clone()
+				local bar = colorPickerClone.Container.Bar
+				local circle = bar.Circle
+				local valueIndicator = circle.Value
+				local value = colorPickerClone.Value
+
+				local callback
+				local percentage = 0
+				local dragging = false
+
+				if not SliderOptions.Name then error("Required setting 'Name' not given") end
+				if not SliderOptions.Callback then error("Required setting 'Callback' not given") end
+
+				colorPickerClone.Title.Text = SliderOptions.Name
+				colorPickerClone.Description.Text = SliderOptions.Description or ""
+
+				handleCornerRadius(colorPickerClone)
+
+				colorPickerClone.BackgroundTransparency = 1
+				colorPickerClone.Title.TextTransparency = 1
+				colorPickerClone.Description.TextTransparency = 1
+				bar.BackgroundTransparency = 1
+				circle.BackgroundTransparency = 1
+				valueIndicator.TextTransparency = 1
+
+				colorPickerClone.Parent = sectionClone
+
+				createTween(colorPickerClone, TweenPresets.Medium, { BackgroundTransparency = 0 })
+				createTween(colorPickerClone.Title, TweenPresets.Medium, { TextTransparency = 0 })
+				createTween(colorPickerClone.Description, TweenPresets.Medium, { TextTransparency = 0 })
+				createTween(bar, TweenPresets.Medium, { BackgroundTransparency = 0 })
+				createTween(circle, TweenPresets.Medium, { BackgroundTransparency = 0 })
+				createTween(valueIndicator, TweenPresets.Medium, { TextTransparency = 0 })
+
+				local function HSVToRGB(h)
+					return Color3.fromHSV(h, 1, 1)
+				end
+				
+				if SliderOptions.Callback ~= nil then
+					callback = SliderOptions.Callback
+				end
+				
+				local function updateColor(p)
+					local color = HSVToRGB(p)
+					bar.BackgroundColor3 = color
+					circle.BackgroundColor3 = color
+					local hex = string.format("#%02X%02X%02X", color.R * 255, color.G * 255, color.B * 255)
+					valueIndicator.Text = hex
+					if callback then callback(hex) end
+				end
+
+				updateColor(percentage)
+
+				circle.InputBegan:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						dragging = true
+						while dragging do
+							task.wait()
+							percentage = math.clamp((UIS:GetMouseLocation().X - bar.AbsolutePosition.X) / bar.AbsoluteSize.X, 0, 1)
+							updateColor(percentage)
+						end
+					end
+				end)
+
+				circle.InputEnded:Connect(function(input)
+					if input.UserInputType == Enum.UserInputType.MouseButton1 then
+						dragging = false
+					end
+				end)
+			end
+
 
 			function sectionFuncs:Edit(NewOptions) -- edit section
 				if NewOptions.Name ~= nil then
