@@ -191,7 +191,7 @@ local Dropdown = Section:NewDropdown({
 ### Edit a dropdown
 
 ```lua
-Dropdown:NewDropdown({
+Dropdown:Edit({
     Name = "Example Dropdown", -- Name of the dropdown | string, optional
     Description = "Example Description",  -- Description of the dropdown | string, optional 
     Choices = {"Option 1", "Option 2"}, -- the choices the user can choose from | table, optional
@@ -206,8 +206,8 @@ Dropdown:NewDropdown({
 
 ```lua
 local Slider = Section:NewSlider({
-    Name = "Example Slider", -- Name of the dropdown | string, required
-    Description = "Example Description",  -- Description of the dropdown | string, optional 
+    Name = "Example Slider", -- Name of the slider | string, required
+    Description = "Example Description",  -- Description of the slider | string, optional 
     MinMax = {"0", "100"}, -- the minimum and maximum states of the slider | table, required
     Increment = 5, -- the increment the slider increases by | number required
     CurrentValue = 20, -- default value | number, required
@@ -220,14 +220,26 @@ local Slider = Section:NewSlider({
 ### Edit a slider
 
 ```lua
-Slider:NewSlider({
-    Name = "Example Slider", -- Name of the dropdown | string, optional
-    Description = "Example Description",  -- Description of the dropdown | string, optional 
+Slider:Edit({
+    Name = "Example Slider", -- Name of the slider | string, optional
+    Description = "Example Description",  -- Description of the slider | string, optional 
     MinMax = {"0", "100"}, -- the minimum and maximum states of the slider | table, optional
     Increment = 5, -- the increment the slider increases by | number optional
     CurrentValue = 20, -- default value | number, optional
     Callback = function(value) -- code executed on interaction with the element | function,  optional
 
+    end,
+})
+```
+
+### Create a color picker
+```lua
+local ColorPicker = Section:NewColorPicker({
+    Name = "Example ColorPicker", -- Name of the color picker | string, optional
+    Description = "Example Description",  -- Description of the color picker | string, optional 
+    DefaultColor = Color3.fromRGB(255, 0, 0), -- Default color | Color3, optional
+    Callback = function(color) -- Code executed when color is selected | function, optional
+        
     end,
 })
 ```
