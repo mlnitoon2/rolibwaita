@@ -1455,11 +1455,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 				local value = colorPickerClone.Value
 
 				local callback
-				local percentage = 0
 				local dragging = false
-
-				if not SliderOptions.Name then error("Required setting 'Name' not given") end
-				if not SliderOptions.Callback then error("Required setting 'Callback' not given") end
 
 				colorPickerClone.Title.Text = SliderOptions.Name
 				colorPickerClone.Description.Text = SliderOptions.Description or ""
@@ -1485,11 +1481,18 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 				local function HSVToRGB(h)
 					return Color3.fromHSV(h, 1, 1)
 				end
-				
+
 				if SliderOptions.Callback ~= nil then
 					callback = SliderOptions.Callback
 				end
-				
+
+				-- Extract hue from DefaultColor (if provided)
+				local percentage = 0
+				if SliderOptions.DefaultColor then
+					local h, _, _ = Color3.toHSV(SliderOptions.DefaultColor)
+					percentage = h -- Set the initial percentage based on hue
+				end
+
 				local function updateColor(p)
 					local color = HSVToRGB(p)
 					bar.BackgroundColor3 = color
@@ -1499,7 +1502,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 					if callback then callback(hex) end
 				end
 
-				updateColor(percentage)
+				updateColor(percentage) -- Initialize with the default color if available
 
 				circle.InputBegan:Connect(function(input)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -1518,6 +1521,7 @@ function rolibwaita:NewWindow(WindowOptions: WindowOptions)
 					end
 				end)
 			end
+
 
 
 			function sectionFuncs:Edit(NewOptions) -- edit section
