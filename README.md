@@ -9,7 +9,7 @@ Please feel free to create a pull request or submit an issue.
 ### Booting the library
 
 ```lua
-local rolibwaita = loadstring(game:HttpGet("https://github.com/mlnitoon2/rolibwaita/raw/branch/master/Source.lua"))()
+local rolibwaita = loadstring(game:HttpGet("https://raw.githubusercontent.com/mlnitoon2/rolibwaita/refs/heads/main/Source.lua"))()
 ```
 
 Place this at the top of your code.
@@ -59,7 +59,20 @@ Tab:Edit({
 local separator = Window:NewSeparator()
 ```
 
-A separator is just a line inbetween tab buttons, only for a stylistic purpose
+A separator is just a line inbetween tab buttons, only for a stylistic purpose, example:
+```lua
+local Tab1 = Window:NewTab({
+	Name = "Tab Example", -- Name of the tab | string, required
+	Icon = "rbxassetid://1234" -- Icon for the tab button | string, optional
+})
+
+local separator = Window:NewSeparator()
+
+local Tab2 = Window:NewTab({
+	Name = "Tab Example 2", -- Name of the tab | string, required
+	Icon = "rbxassetid://1234" -- Icon for the tab button | string, optional
+})
+```
 
 ### Create a section
 
@@ -69,6 +82,7 @@ local Section = Tab:NewSection({
     Description = "Description Example", -- Description of the section | string, optional 
 })
 ```
+Sections are in the central part of the UI, containing buttons, toggles, sliders, etc
 
 ### Edit a section
 
