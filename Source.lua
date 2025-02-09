@@ -14,7 +14,7 @@
 local rolibwaita = {}
 
 -- \\ Variables // --
-local Assets = game:GetObjects("rbxassetid://83456462343337")[1]
+local Assets = game:GetObjects("rbxassetid://124288242383863")[1]
 
 local UIS = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -48,6 +48,10 @@ type TabOptions = {
 type SectionOptions = {
 	Name: string,
 	Description: string
+}
+
+type TextLabelOptions = {
+	Text: string
 }
 
 -- \\ Functions // --
